@@ -9,5 +9,12 @@
     -moz-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     padding-top: 27px;
+    padding-bottom: 36px;
     margin: auto;
+}
+
+@media screen and (min-width: 767px) {
+    .page {
+        padding-bottom: 60px;
+    }
 }
