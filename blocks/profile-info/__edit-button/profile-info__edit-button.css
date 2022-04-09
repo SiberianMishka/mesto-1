@@ -8,7 +8,7 @@
     height: 18px;
     align-self: center;
     cursor: pointer;
-    transition: opacity .4s;
+    transition: .4s;
 }
 
 .profile-info__edit-button:hover {

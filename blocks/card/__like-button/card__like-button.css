@@ -4,7 +4,7 @@
     background-color: #fff;
     border: none;
     cursor: pointer;
-    transition: opacity .4s;
+    transition: .4s;
 }
 
 .card__like-button:hover {
