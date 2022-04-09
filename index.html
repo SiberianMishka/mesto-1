@@ -76,16 +76,17 @@
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
   </div>
-  <section class="popup">
-    <div class="popup__container">
-      <button class="popup__close-button"><img src="./images/close-image.svg" alt="иконка закрытия" class="popup__close-button-image"></button>
-      <h2 class="popup__heading">Редактировать профиль</h2>
-      <form class="popup__form">
-        <input type="text" class="popup__input">
-        <input type="text" class="popup__input">
-        <input type="submit" value="Сохранить" class="popup__input">
-      </form>
-    </div>
-  </section>
+<section class="popup">
+  <div class="popup__container">
+    <button class="popup__close-button"><img src="./images/close-image.svg" alt="иконка закрытия" class="popup__close-button-image"></button>
+    <h2 class="popup__heading">Редактировать профиль</h2>
+    <form class="popup__form">
+      <input type="text" name="user-name" class="popup__input popup__input-name" placeholder="Ваше Имя">
+      <input type="text" name="user-description" class="popup__input popup__input-description" placeholder="Расскажите о себе">
+      <input type="submit" value="Сохранить" class="popup__input">
+    </form>
+  </div>
+</section>
+<script src="./scripts/popup.js"></script>
 </body>
 </html>

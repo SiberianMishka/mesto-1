@@ -29,6 +29,11 @@
     margin-top: 45px;
     margin-bottom: 0;
     cursor: pointer;
+    transition: opacity .4s;
+}
+
+.popup__input[type = submit]:hover {
+    opacity: .8;
 }
 
 @media screen and (min-width: 560px) {
