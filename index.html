@@ -17,7 +17,7 @@
           <img src="./images/profile-avatar.jpg" alt="аватарка" class="profile-info__image">
           <div class="profile-info__text-box">
             <div class="profile-info__name-box">
-              <p class="profile-info__name">Жак-Ив Кусто</p>
+              <h1 class="profile-info__name">Жак-Ив Кусто</h1>
               <button class="profile-info__edit-button"><img src="./images/edit-button-image.svg" alt="карандаш" class="profile-info__edit-button-image"></button>
             </div>
             <p class="profile-info__description">Исследователь океана</p>
@@ -30,42 +30,42 @@
           <li class="card">
             <img src="./images/card-moscow.jpg" alt="картинка карточки" class="card__image">
             <div class="card__description">
-              <p class="card__text">Москва</p>
+              <h3 class="card__text">Москва</h3>
               <button class="card__like-button"><img src="./images/like-image.svg" alt="лайк" class="card__like-button-image"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/card-spb.jpg" alt="картинка карточки" class="card__image">
             <div class="card__description">
-              <p class="card__text">Санкт-Петербург</p>
+              <h3 class="card__text">Санкт-Петербург</h3>
               <button class="card__like-button"><img src="./images/like-image.svg" alt="лайк" class="card__like-button-image"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/card-ivanovo.jpg" alt="картинка карточки" class="card__image">
             <div class="card__description">
-              <p class="card__text">Иваново</p>
+              <h3 class="card__text">Иваново</h3>
               <button class="card__like-button"><img src="./images/like-image.svg" alt="лайк" class="card__like-button-image"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/card-karelia.jpg" alt="картинка карточки" class="card__image">
             <div class="card__description">
-              <p class="card__text">Карелия</p>
+              <h3 class="card__text">Карелия</h3>
               <button class="card__like-button"><img src="./images/like-image.svg" alt="лайк" class="card__like-button-image"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/card-ryazan.jpg" alt="картинка карточки" class="card__image">
             <div class="card__description">
-              <p class="card__text">Рязань</p>
+              <h3 class="card__text">Рязань</h3>
               <button class="card__like-button"><img src="./images/like-image.svg" alt="лайк" class="card__like-button-image"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/card-vladivostok.jpg" alt="картинка карточки" class="card__image">
             <div class="card__description">
-              <p class="card__text">Владивосток</p>
+              <h3 class="card__text">Владивосток</h3>
               <button class="card__like-button"><img src="./images/like-image.svg" alt="лайк" class="card__like-button-image"></button>
             </div>
           </li>
@@ -80,10 +80,10 @@
   <div class="popup__container">
     <button class="popup__close-button"><img src="./images/close-image.svg" alt="иконка закрытия" class="popup__close-button-image"></button>
     <h2 class="popup__heading">Редактировать профиль</h2>
-    <form class="popup__form">
-      <input type="text" name="user-name" class="popup__input popup__input-name" placeholder="Ваше Имя">
-      <input type="text" name="user-description" class="popup__input popup__input-description" placeholder="Расскажите о себе">
-      <input type="submit" value="Сохранить" class="popup__input">
+    <form name="popup-form" class="popup__form">
+      <input type="text" name="user-name" class="popup__input popup__input_type_name" placeholder="Ваше Имя">
+      <input type="text" name="user-description" class="popup__input popup__input_type_description" placeholder="Расскажите о себе">
+      <input type="submit" value="Сохранить" class="popup__submit-button">
     </form>
   </div>
 </section>
