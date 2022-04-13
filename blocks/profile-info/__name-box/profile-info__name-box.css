@@ -1,6 +1,7 @@
 .profile-info__name-box {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     padding-top: 26px;
 }
 
