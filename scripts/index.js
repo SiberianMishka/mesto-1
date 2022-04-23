@@ -139,7 +139,7 @@ function popupPictureZoom(name, link) {
   const popupCaption = document.querySelector('.popup__caption');
   popupCaption.textContent = name;
 
-  const popupImage = document.querySelector('.card__image_picture-popup');
+  const popupImage = document.querySelector('.popup__image');
   popupImage.src = link;
 }
 
