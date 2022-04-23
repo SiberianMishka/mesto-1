@@ -78,6 +78,7 @@ const cardTemplate = document.querySelector('#card-template').content;
 let cardInfo = initialCards.map(item => ({name: item.name, link: item.link}));
 
 function render() {
+    
     cardInfo.forEach(renderCards);
 }
 
@@ -85,11 +86,22 @@ function renderCards({ name, link }) {
     let cardElement = cardTemplate.querySelector('.card').cloneNode(true);
     cardElement.querySelector('.card__text').textContent = name;
     cardElement.querySelector('.card__image').src = link;
+    cardElement.querySelector('.card__like-button').addEventListener('click', function (evt) {
+      evt.target.classList.toggle('card__like-button_active');
+    });
+    
+    let deleteButton = cardElement.querySelector('.card__delete-button');
+    deleteButton.addEventListener('click', function() {
+      const listItem = deleteButton.closest('.card');
+      listItem.remove();
+    });
   
     cardsContainer.prepend(cardElement);
   }
   
 render();
+
+
 
 
 
