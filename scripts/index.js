@@ -142,3 +142,9 @@ function popupPictureZoom(name, link) {
   const popupImage = document.querySelector('.card__image_picture-popup');
   popupImage.src = link;
 }
+
+popupPicture.addEventListener('click', function (evt) {
+  if (evt.target === evt.currentTarget) {
+    popupClose(popupPicture);
+  }
+});
