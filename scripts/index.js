@@ -71,6 +71,16 @@ popups.forEach((popup) => {
       closePopup(popup);
     }
   });
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+    document.removeEventListener('keydown', (evt) => {
+      if (evt.key === 'Escape') {
+        closePopup(popup);
+      }
+    });
+  });
 });
 
 formElement.addEventListener('submit', function (evt) {
@@ -93,7 +103,6 @@ function createCard({ name, link }) {
   cardImage.src = link;
   cardImage.alt = name;
 
-  addButtonsOnCard(cardElement);
 
   cardImage.addEventListener('click', function () {
     popupCaption.textContent = name;
@@ -133,20 +142,17 @@ formElementAddCard.addEventListener('submit', function (evt) {
   closePopup(popupAddCard);
 });
 
-function deleteCardHandler(evt) {
-  evt.target.closest('.card').remove();
-}
+cardsContainer.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('card__like-button')) {
+    evt.target.classList.toggle('card__like-button_active');
+    }
+})
 
-function likeCardHandler(evt) {
-  evt.target.classList.toggle('card__like-button_active');
-}
+cardsContainer.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('card__delete-button')) {
+    evt.target.closest('.card').remove();
+    }
+})
 
-function addButtonsOnCard(el) {
-  const cardDeleteButton = el.querySelector('.card__delete-button');
-  cardDeleteButton.addEventListener('click', deleteCardHandler);
-
-  const cardLikeButton = el.querySelector('.card__like-button');
-  cardLikeButton.addEventListener('click', likeCardHandler);
-}
 
 renderCards();
