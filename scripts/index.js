@@ -25,35 +25,33 @@ const popupImage = popupPicture.querySelector('.popup__image');
 const initialCards = [
   {
     name: 'Рязань',
-    link: 'https://images.unsplash.com/photo-1613411278232-e29e3506f4fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1011&q=80'
+    link: 'https://images.unsplash.com/photo-1613411278232-e29e3506f4fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1011&q=80',
   },
   {
     name: 'Карелия',
-    link: 'https://images.unsplash.com/photo-1559029881-7cfd01ac1f18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80'
+    link: 'https://images.unsplash.com/photo-1559029881-7cfd01ac1f18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80',
   },
   {
     name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
   },
   {
     name: 'Владивосток',
-    link: 'https://images.unsplash.com/photo-1563941433-b6a094653ed2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=733&q=80'
+    link: 'https://images.unsplash.com/photo-1563941433-b6a094653ed2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=733&q=80',
   },
   {
     name: 'Санкт-Петербург',
-    link: 'https://images.unsplash.com/photo-1554844344-c34ea04258c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80'
+    link: 'https://images.unsplash.com/photo-1554844344-c34ea04258c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
   },
   {
     name: 'Москва',
-    link: 'https://images.unsplash.com/photo-1547448415-e9f5b28e570d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
-  }
+    link: 'https://images.unsplash.com/photo-1547448415-e9f5b28e570d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+  },
 ];
 
-
-
 function setInfo() {
-    jobInput.value = userDescription.innerText;
-    nameInput.value = userName.innerText;
+  jobInput.value = userDescription.innerText;
+  nameInput.value = userName.innerText;
 }
 
 function openPopup(popupWindow) {
@@ -66,16 +64,14 @@ function closePopup(popupWindow) {
 
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('popup_opened')) {
-          closePopup(popup)
-      }
-      if (evt.target.classList.contains('popup__close-button')) {
-        closePopup(popup)
-      }
-  })
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__close-button')) {
+      closePopup(popup);
+    }
+  });
 });
-
-
 
 formElement.addEventListener('submit', function (evt) {
   evt.preventDefault();
@@ -89,8 +85,6 @@ editPopupButton.addEventListener('click', function () {
   openPopup(popupProfile);
 });
 
-
-
 function createCard({ name, link }) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   const cardDescription = cardElement.querySelector('.card__text');
@@ -98,59 +92,54 @@ function createCard({ name, link }) {
   cardDescription.textContent = name;
   cardImage.src = link;
   cardImage.alt = name;
- 
+
   addButtonsOnCard(cardElement);
 
-  cardImage.addEventListener('click', function() {
-  popupCaption.textContent = name;
-  popupImage.src = link;
-  popupImage.alt = name;
-  
-  openPopup(popupPicture)
+  cardImage.addEventListener('click', function () {
+    popupCaption.textContent = name;
+    popupImage.src = link;
+    popupImage.alt = name;
+
+    openPopup(popupPicture);
   });
-  
+
   return cardElement;
 }
 
 function renderCards() {
   const cardInfo = initialCards.map(({ name, link }) => {
-  const newCard = createCard({ name, link });
-  
-  
-  return newCard;
-});
+    const newCard = createCard({ name, link });
 
-cardsContainer.append(...cardInfo);
+    return newCard;
+  });
 
-};
-
+  cardsContainer.append(...cardInfo);
+}
 
 cardAddButton.addEventListener('click', () => openPopup(popupAddCard));
 
-
-formElementAddCard.addEventListener('submit', function(evt) {
+formElementAddCard.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  
-  const newCard = createCard({name: titleInput.value, link: imageLinkInput.value});
-  
+
+  const newCard = createCard({
+    name: titleInput.value,
+    link: imageLinkInput.value,
+  });
+
   formElementAddCard.reset();
-  
+
   cardsContainer.prepend(newCard);
 
   closePopup(popupAddCard);
 });
 
-
-
 function deleteCardHandler(evt) {
   evt.target.closest('.card').remove();
 }
 
-
-function likeCardHandler(evt) { 
+function likeCardHandler(evt) {
   evt.target.classList.toggle('card__like-button_active');
 }
-
 
 function addButtonsOnCard(el) {
   const cardDeleteButton = el.querySelector('.card__delete-button');
