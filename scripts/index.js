@@ -51,38 +51,34 @@ const initialCards = [
   },
 ];
 
-function setInfo() {
+const setInfo = () => {
   jobInput.value = userDescription.textContent;
   nameInput.value = userName.textContent;
 }
 
-function openPopup(popupWindow) {
+const handlePopupsListener = (evt) => {
+  if (
+    evt.key === 'Escape' ||
+    evt.target.classList.contains('popup_opened') ||
+    evt.target.classList.contains('popup__close-button')
+  ) {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
+};
+
+const openPopup = (popupWindow) => {
   popupWindow.classList.add('popup_opened');
+  document.addEventListener('keydown', handlePopupsListener);
 }
 
-function closePopup(popupWindow) {
+const closePopup = (popupWindow) => {
   popupWindow.classList.remove('popup_opened');
+  document.removeEventListener('keydown', handlePopupsListener);
 }
 
 popups.forEach((popup) => {
-  popup.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
-      closePopup(popup);
-    }
-    if (evt.target.classList.contains('popup__close-button')) {
-      closePopup(popup);
-    }
-  });
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }
-    document.removeEventListener('keydown', (evt) => {
-      if (evt.key === 'Escape') {
-        closePopup(popup);
-      }
-    });
-  });
+  popup.addEventListener('mousedown', handlePopupsListener);
 });
 
 formElementPopup.addEventListener('submit', function (evt) {
@@ -99,7 +95,7 @@ editPopupButton.addEventListener('click', function () {
   openPopup(popupProfile);
 });
 
-function createCard({ name, link }) {
+const createCard = ({ name, link }) => {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   const cardDescription = cardElement.querySelector('.card__text');
   const cardImage = cardElement.querySelector('.card__image');
@@ -118,7 +114,7 @@ function createCard({ name, link }) {
   return cardElement;
 }
 
-function renderCards() {
+const renderCards = () => {
   const cardInfo = initialCards.map(({ name, link }) => {
     const newCard = createCard({ name, link });
 
@@ -153,7 +149,7 @@ cardsContainer.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('card__like-button')) {
     evt.target.classList.toggle('card__like-button_active');
   }
-  
+
   if (evt.target.classList.contains('card__delete-button')) {
     evt.target.closest('.card').remove();
   }
