@@ -1,20 +1,14 @@
 .popup__input {
     width: 238px;
     border: none;
-    margin: 0 auto 30px;
+    outline: none;
+    margin: 0 auto;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.5;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
-}
-
-.popup__input:nth-child(2) {
-    margin-bottom: 0;
-}
-
-.popup__input:focus {
-    outline: none;
+    padding-bottom: 13px;
 }
 
 @media screen and (min-width: 560px) {
