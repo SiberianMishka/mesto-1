@@ -1,5 +1,3 @@
-const popups = document.querySelectorAll('.popup');
-
 const profileInfo = document.querySelector('.profile-info');
 const popupEditButton = profileInfo.querySelector('.profile-info__edit-button');
 const userName = profileInfo.querySelector('.profile-info__name');
