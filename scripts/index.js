@@ -1,3 +1,5 @@
+import {FormValidation} from './FormValidation.js';
+
 const profileInfo = document.querySelector('.profile-info');
 const popupEditButton = profileInfo.querySelector('.profile-info__edit-button');
 const userName = profileInfo.querySelector('.profile-info__name');
@@ -25,6 +27,15 @@ const popupCaption = popupPicture.querySelector('.popup__caption');
 const popupImage = popupPicture.querySelector('.popup__image');
 const pictureCloseButton = popupPicture.querySelector('.popup__close-button');
 
+const validatorSelectors = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_inactive',
+  inputErrorClass: 'popup__input_error',
+  errorClass: 'popup__error_active',
+};
+
 const initialCards = [
   {
     name: 'Рязань',
@@ -51,6 +62,13 @@ const initialCards = [
     link: 'https://images.unsplash.com/photo-1547448415-e9f5b28e570d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
   },
 ];
+
+const cardValidator = addFormValidation(formElementAddCard);
+const profileValidator = addFormValidation(formElementPopup);
+
+function addFormValidation(form) {
+  return new FormValidation(validatorSelectors, form);
+}
 
 const setInfo = () => {
   jobInput.value = userDescription.textContent;
@@ -100,7 +118,8 @@ formElementPopup.addEventListener('submit', handleProfileEdit);
 
 popupEditButton.addEventListener('click', () => {
   setInfo();
-  enablePopupSubmitButton(profileSubmitButton, 'popup__submit-button_inactive');
+  profileValidator.enableValidation();
+  profileValidator.enablePopupSubmitButton();
   openPopup(popupProfile);
 });
 
@@ -140,7 +159,8 @@ const renderCards = () => {
 };
 
 cardAddButton.addEventListener('click', () => {
-  disabledPopupSubmitButton(cardSubmitButton, 'popup__submit-button_inactive');
+  cardValidator.enableValidation();
+  cardValidator.disabledPopupSubmitButton();
   openPopup(popupAddCard);
 });
 
