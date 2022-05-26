@@ -1,4 +1,4 @@
-import { Card} from './Card.js';
+import {Card} from './Card.js';
 import {FormValidation} from './FormValidation.js';
 
 const profileInfo = document.querySelector('.profile-info');
