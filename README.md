@@ -22,5 +22,7 @@
 
 **Figma**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* [ПР4 Figma макет](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* [ПР5 Figma макет](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
+* [ПР6 Figma макет](https://www.figma.com/file/4ijJW8bY1iG0SCuPK9ggCC/JavaScript.Sprint-6?node-id=0%3A1)
 * [Ссылка на проект в GitHubPages](https://vlovchinnikov21.github.io/mesto/)
