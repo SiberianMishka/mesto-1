@@ -5,49 +5,43 @@ export default class Popup {
 
   // Приватный метод для закрытия попапа по нажатию на ESC
 
-  _handleEscClose = (evt) => {
+  _handleEscClose(evt) {
     if (evt.key === 'Escape') {
       this.close();
     }
-  };
+  }
 
   // Приватный метод для закрытия попапа по клику на оверлей
 
-  _handleOverlayClose = (evt) => {
+  _handleOverlayClose(evt) {
     if (evt.target.classList.contains('popup_opened')) {
-      this.close();
+      this.close(evt.target);
     }
-  };
+  }
 
   // Публичный метод для открытия попапа с добавлением обработчика событий по закрытию на кнопку ESC
 
-  open = () => {
+  open() {
     this._popup.classList.add('popup_opened');
-    document.addEventListener('keydown', () => {
-      this._handleEscClose();
-    });
-  };
+    document.addEventListener('keydown', this._handleEscClose.bind(this));
+  }
 
   // Публичный метод для закрытия попапа с удалением обработчика событий по закрытию на кнопку ESC
 
-  close = () => {
+  close() {
     this._popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', () => {
-      this._handleEscClose();
-    });
-  };
+    document.removeEventListener('keydown', this._handleEscClose.bind(this));
+  }
 
   // Публичный метод для добавления обработчиков событий для попапа
 
-  setEventListeners = () => {
-    this._button = this._popup.querySelector('.popup__close-button');
+  setEventListeners() {
+    this._popup.addEventListener('click', this._handleOverlayClose.bind(this));
 
-    this._popup.addEventListener('click', () => {
-      this._handleOverlayClose();
-    });
-
-    this._button.addEventListener('click', () => {
-      this.close();
-    });
-  };
+    this._popup
+      .querySelector('.popup__close-button')
+      .addEventListener('click', () => {
+        this.close();
+      });
+  }
 }

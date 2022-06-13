@@ -1,6 +1,6 @@
 export default class Section {
-  constructor({ item, renderer }, containerSelector) {
-    this._renderedItems = item;
+  constructor({ items, renderer }, containerSelector) {
+    this._renderedItems = items;
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
   }
@@ -8,12 +8,16 @@ export default class Section {
   // Публичный метод для добавления элементов в контейнер
 
   addItem(card) {
-    this._container.append(card);
+    this._container.prepend(card);
   }
+
+  // Публичный метод очистки контейнера
 
   clear() {
     this._container.innerHTML = '';
   }
+
+  // Публичный метод отрисовки элементов
 
   renderItems() {
     this.clear();

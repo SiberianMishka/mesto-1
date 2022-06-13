@@ -1,4 +1,4 @@
-export class FormValidation {
+export default class FormValidation {
   constructor(obj, formElement) {
     this._formSelector = obj.formSelector;
     this._inputSelector = obj.inputSelector;
@@ -15,33 +15,33 @@ export class FormValidation {
     );
   }
 
-  _showInputError = (inputElement, errorMessage) => {
+  _showInputError(inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(
       `.popup__error-${inputElement.id}`
     );
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._errorClass);
-  };
+  }
 
-  _hideInputError = (inputElement) => {
+  _hideInputError(inputElement) {
     const errorElement = this._formElement.querySelector(
       `.popup__error-${inputElement.id}`
     );
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
-  };
+  }
 
-  _checkInputValidity = (inputElement) => {
+  _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement, inputElement.validationMessage);
     } else {
       this._hideInputError(inputElement);
     }
-  };
+  }
 
-  _setEventListeners = () => {
+  _setEventListeners() {
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
@@ -49,31 +49,31 @@ export class FormValidation {
         this._toggleButtonState();
       });
     });
-  };
+  }
 
-  _hasInvalidInput = () => {
+  _hasInvalidInput() {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
-  };
+  }
 
-  _disabledPopupSubmitButton = () => {
+  _disabledPopupSubmitButton() {
     this._buttonElement.classList.add(this._inactiveButtonClass);
     this._buttonElement.disabled = true;
-  };
+  }
 
-  _enablePopupSubmitButton = () => {
+  _enablePopupSubmitButton() {
     this._buttonElement.classList.remove(this._inactiveButtonClass);
     this._buttonElement.disabled = false;
-  };
+  }
 
-  _toggleButtonState = () => {
+  _toggleButtonState() {
     if (this._hasInvalidInput(this._inputList)) {
       this._disabledPopupSubmitButton();
     } else {
       this._enablePopupSubmitButton();
     }
-  };
+  }
 
   resetValidation() {
     this._toggleButtonState();
@@ -83,7 +83,7 @@ export class FormValidation {
     });
   }
 
-  enableValidation = () => {
+  enableValidation() {
     this._setEventListeners();
-  };
+  }
 }

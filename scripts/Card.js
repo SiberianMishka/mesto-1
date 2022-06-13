@@ -1,9 +1,8 @@
-export class Card {
-  constructor(name, link, cardSelector, openPopup, handleCardClick) {
-    this._name = name;
-    this._link = link;
+export default class Card {
+  constructor({ item, handleCardClick }, cardSelector) {
+    this._name = item.name;
+    this._link = item.link;
     this._cardSelector = cardSelector;
-    this._openPopup = openPopup;
     this._handleCardClick = handleCardClick;
   }
 
