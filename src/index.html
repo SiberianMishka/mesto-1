@@ -3,21 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css"/>
     <title>Mesto</title>
   </head>
 
   <body class="body">
     <div class="page">
       <header class="header">
-        <img src="./images/logo.svg" alt="лого-место" class="logo" />
+        <img src="<%=require('./images/logo.svg')%>" alt="лого-место" class="logo" />
       </header>
 
       <main>
         <section class="profile">
           <div class="profile-info">
             <img
-              src="./images/profile-avatar.jpg"
+              src="<%=require('./images/profile-avatar.jpg')%>"
               alt="аватарка"
               class="profile-info__image"
             />
@@ -26,7 +25,7 @@
                 <h1 class="profile-info__name">Жак-Ив Кусто</h1>
                 <button type="button" class="profile-info__edit-button">
                   <img
-                    src="./images/edit-button-image.svg"
+                    src="<%=require('./images/edit-button-image.svg')%>"
                     alt="карандаш"
                     class="profile-info__edit-button-image"
                   />
@@ -37,7 +36,7 @@
           </div>
           <button type="button" class="profile__add-button">
             <img
-              src="./images/add-button-image.svg"
+              src="<%=require('./images/add-button-image.svg')%>"
               alt="плюсик"
               class="profile__add-button-image"
             />
@@ -144,12 +143,6 @@
         </figure>
       </div>
     </section>
-
-    <script type="module" src="./components/Card.js"></script>
-    <script type="module" src="./components/FormValidation.js"></script>
-    <script type="module" src="./components/UserInfo.js"></script>
-    <script type="module" src="./components/PopupWithForm.js"></script>
-    <script type="module" src="./components/PopupWithImage.js"></script>
-    <script type="module" src="./pages/index.js"></script>
+    
   </body>
 </html>
