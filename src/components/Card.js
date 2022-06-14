@@ -6,6 +6,8 @@ export default class Card {
     this._handleCardClick = handleCardClick;
   }
 
+  // Приватный метод для получения копии теплейта
+
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
@@ -15,13 +17,19 @@ export default class Card {
     return cardElement;
   }
 
+  // Приватный метод для удаления карточки
+
   _handleDeleteCard(evt) {
     evt.target.closest('.card').remove();
   }
 
+  // Приватный метод для лайка карточки
+
   _handleLikeCard(evt) {
     evt.target.classList.toggle('card__like-button_active');
   }
+
+  // Обработчики событий на карточку
 
   _setEventListeners() {
     this._cardLikeButton = this._card.querySelector('.card__like-button');
@@ -40,6 +48,8 @@ export default class Card {
       this._handleCardClick(this._name, this._link);
     });
   }
+
+  // Публичный метод для рендера карточки с подставлением данных
 
   generateCard() {
     this._card = this._getTemplate();

@@ -8,6 +8,8 @@ export default class PopupWithForm extends Popup {
     this._popupForm = this._popup.querySelector('.popup__form');
   }
 
+  // Приватный метод для получения значений инпутов
+
   _getInputValues() {
     this._popupFormInputs = this._popupForm.querySelectorAll('.popup__input');
     this._newValues = {};
@@ -16,6 +18,8 @@ export default class PopupWithForm extends Popup {
     });
     return this._newValues;
   }
+
+  // Обработчики событий
 
   setEventListeners() {
     super.setEventListeners();
@@ -28,6 +32,8 @@ export default class PopupWithForm extends Popup {
     });
   }
 
+  // Наследованный публичный метод закрытия с добавлением сброса формы
+  
   close() {
     super.close();
     this._popupForm.reset();

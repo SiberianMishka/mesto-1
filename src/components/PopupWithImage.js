@@ -5,6 +5,8 @@ export default class PopupWithImage extends Popup {
     super(popupSelector);
   }
 
+  // Наследованный публичный метод открытия с подставлением данных 
+
   open(data) {
     super.open();
     this._popupCaption = this._popup.querySelector('.popup__caption');

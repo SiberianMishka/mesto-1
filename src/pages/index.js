@@ -58,27 +58,37 @@ const createCard = (item) => {
   );
 };
 
+// Экземпляр для попапа с картинкой
+
 const popupPicture = new PopupWithImage(popupPictureSelector);
 popupPicture.setEventListeners();
 
-const cardArr = new Section(
+
+// Рендер карточек из массива
+
+const cardList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
       const card = createCard(item);
       const cardElement = card.generateCard();
-      cardArr.addItem(cardElement);
+      cardList.addItem(cardElement);
     },
   },
   cardsContainerSelector
 );
 
-cardArr.renderItems();
+cardList.renderItems();
+
+
+// Экземпляр с данными пользователя
 
 const userInfo = new UserInfo({
   name: userNameSelector,
   description: userDescriptionSelector,
 });
+
+// Экземпляр попапа с формами для редактирования профиля и обработчик на кнопку вызова попапа
 
 const popupProfileEdit = new PopupWithForm(popupProfileSelector, () => {
   userInfo.setUserInfo(jobInput, nameInput);
@@ -94,10 +104,12 @@ popupEditButton.addEventListener('click', () => {
   popupProfileEdit.open();
 });
 
+// Экземпляр попапа с формами для добавления карточки и обработчик на кнопку вызова попапа
+
 const popupCardAdd = new PopupWithForm(popupAddCardSelector, (items) => {
   const card = createCard(items);
   const cardElement = card.generateCard();
-  cardArr.addItem(cardElement);
+  cardList.addItem(cardElement);
 });
 
 popupCardAdd.setEventListeners();
