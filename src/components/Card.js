@@ -6,7 +6,7 @@ export default class Card {
     this._handleCardClick = handleCardClick;
   }
 
-  // Приватный метод для получения копии теплейта
+  // Приватный метод для получения копии темплейта
 
   _getTemplate() {
     const cardElement = document
