@@ -9,6 +9,7 @@ const cardAddButton = document.querySelector('.profile__add-button');
 
 const userNameSelector = '.profile-info__name';
 const userDescriptionSelector = '.profile-info__description';
+const userAvatarSelector = '.profile-info__image';
 const popupProfileSelector = '.popup_profile-edit';
 const cardTemplateSelector = '#card-template';
 const cardsContainerSelector = '.cards';
@@ -26,33 +27,6 @@ const validatorSelectors = {
   errorClass: 'popup__error_active',
 };
 
-const initialCards = [
-  {
-    name: 'Рязань',
-    link: 'https://images.unsplash.com/photo-1613411278232-e29e3506f4fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1011&q=80',
-  },
-  {
-    name: 'Карелия',
-    link: 'https://images.unsplash.com/photo-1559029881-7cfd01ac1f18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80',
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-  },
-  {
-    name: 'Владивосток',
-    link: 'https://images.unsplash.com/photo-1563941433-b6a094653ed2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=733&q=80',
-  },
-  {
-    name: 'Санкт-Петербург',
-    link: 'https://images.unsplash.com/photo-1554844344-c34ea04258c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
-  },
-  {
-    name: 'Москва',
-    link: 'https://images.unsplash.com/photo-1547448415-e9f5b28e570d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-  },
-];
-
 export {
   popupEditButton,
   nameInput,
@@ -66,5 +40,5 @@ export {
   popupAddCardSelector,
   popupPictureSelector,
   validatorSelectors,
-  initialCards,
+  userAvatarSelector,
 };

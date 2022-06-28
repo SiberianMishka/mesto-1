@@ -3,6 +3,7 @@
 import './index.css';
 
 // Импорт классов
+import Api from '../components/Api.js';
 import Card from '../components/Card.js';
 import FormValidation from '../components/FormValidation.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -25,9 +26,8 @@ import {
   popupAddCardSelector,
   popupPictureSelector,
   validatorSelectors,
-  initialCards,
+  userAvatarSelector,
 } from '../utils/constants.js';
-
 
 // Создание экземпляров валидаторов для форм
 
@@ -44,18 +44,34 @@ const enableValidation = (config) => {
   });
 };
 
+// Экземпляр API
+
+const api = new Api({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-44',
+  headers: {
+    authorization: '79b08422-294b-4a24-81fb-90326f802f37',
+    'Content-Type': 'application/json',
+  },
+});
+
 // Экземпляр для создания карточки
 
 const createCard = (item) => {
-  return new Card(
+  const card = new Card(
     {
       item: item,
       handleCardClick: () => {
         popupPicture.open(item);
       },
+      handleLikeCard: () => {
+        card.handleLikeCard();
+      },
     },
-    cardTemplateSelector
+    cardTemplateSelector,
+    api,
+    userId
   );
+  return card;
 };
 
 // Экземпляр для попапа с картинкой
@@ -63,12 +79,10 @@ const createCard = (item) => {
 const popupPicture = new PopupWithImage(popupPictureSelector);
 popupPicture.setEventListeners();
 
-
 // Рендер карточек из массива
 
 const cardList = new Section(
   {
-    items: initialCards,
     renderer: (item) => {
       const card = createCard(item);
       const cardElement = card.generateCard();
@@ -78,14 +92,12 @@ const cardList = new Section(
   cardsContainerSelector
 );
 
-cardList.renderItems();
-
-
 // Экземпляр с данными пользователя
 
 const userInfo = new UserInfo({
   name: userNameSelector,
   description: userDescriptionSelector,
+  avatar: userAvatarSelector,
 });
 
 // Экземпляр попапа с формами для редактирования профиля и обработчик на кнопку вызова попапа
@@ -118,6 +130,18 @@ cardAddButton.addEventListener('click', () => {
   formValidators['popup-add-card'].resetValidation();
   popupCardAdd.open();
 });
+
+let userId;
+
+api
+  .getData()
+  .then(([cards, userData]) => {
+    userInfo.setUserInfo(userData);
+    userId = userData._id;
+
+    cardList.renderItems(cards);
+  })
+  .catch((err) => console.log(err));
 
 // Вызовы функций
 enableValidation(validatorSelectors);
