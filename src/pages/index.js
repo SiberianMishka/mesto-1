@@ -104,8 +104,16 @@ const userInfo = new UserInfo({
 
 // Экземпляр попапа с формами для редактирования профиля и обработчик на кнопку вызова попапа
 
-const popupProfileEdit = new PopupWithForm(popupProfileSelector, () => {
-  userInfo.setUserInfo(jobInput, nameInput);
+const popupProfileEdit = new PopupWithForm(popupProfileSelector, (items) => {
+  popupProfileEdit.renderLoading(true);
+  api
+    .setUserProfile(items)
+    .then((item) => {
+      userInfo.setUserInfo(item);
+      popupProfileEdit.close();
+    })
+    .catch((err) => console.log(err))
+    .finally(() => popupProfileEdit.renderLoading(false));
 });
 
 popupProfileEdit.setEventListeners();
