@@ -26,24 +26,24 @@ export default class Api {
     }).then(this._checkResponse);
   }
 
-  setUserProfile({ userName, userAbout }) {
+  setUserProfile(items) {
     return fetch(this._url + '/users/me', {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        name: userName,
-        about: userAbout,
+        name: items.userName,
+        about: items.userAbout,
       }),
     }).then(this._checkResponse);
   }
 
-  addUserCard({ name, link }) {
+  addUserCard(items) {
     return fetch(this._url + '/cards', {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
-        name: name,
-        link: link,
+        name: items.name,
+        link: items.link,
       }),
     }).then(this._checkResponse);
   }
@@ -69,12 +69,12 @@ export default class Api {
     }).then(this._checkResponse);
   }
 
-  editUserAvatar({ avatarLink }) {
-    return fetch(this._url + '/cards', {
+  editUserAvatar(items) {
+    return fetch(this._url + '/users/me/avatar', {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: avatarLink,
+        avatar: items.avatar,
       }),
     }).then(this._checkResponse);
   }

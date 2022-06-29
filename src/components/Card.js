@@ -32,13 +32,13 @@ export default class Card {
     return cardElement;
   }
 
-  // Приватный метод для удаления карточки
+  // Публичный метод для удаления карточки
 
   handleDeleteCard() {
     this._card.closest('.card').remove();
   }
 
-  // Приватный метод для лайка карточки
+  // Публичный метод для лайка карточки
 
   handleLikeCard() {
     const cardLikeCount = this._card.querySelector('.card__like-counter');
@@ -72,8 +72,8 @@ export default class Card {
     this._cardDeleteButton = this._card.querySelector('.card__delete-button');
     this._cardImage = this._card.querySelector('.card__image');
 
-    this._cardLikeButton.addEventListener('click', (evt) => {
-      this._handleLikeCard(evt);
+    this._cardLikeButton.addEventListener('click', () => {
+      this._handleLikeClick();
     });
 
     this._cardDeleteButton.addEventListener('click', (evt) => {

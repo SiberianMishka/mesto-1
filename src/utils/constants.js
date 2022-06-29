@@ -4,6 +4,7 @@ const popupEditButton = document.querySelector('.profile-info__edit-button');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_description');
 const cardAddButton = document.querySelector('.profile__add-button');
+const avatarEditButton = document.querySelector('.profile-info__avatar-button');
 
 // Селекторы
 
@@ -11,6 +12,7 @@ const userNameSelector = '.profile-info__name';
 const userDescriptionSelector = '.profile-info__description';
 const userAvatarSelector = '.profile-info__image';
 const popupProfileSelector = '.popup_profile-edit';
+const popupAvatarEditSelector = '.popup_avatar-edit';
 const cardTemplateSelector = '#card-template';
 const cardsContainerSelector = '.cards';
 const popupAddCardSelector = '.popup_add-card';
@@ -41,4 +43,6 @@ export {
   popupPictureSelector,
   validatorSelectors,
   userAvatarSelector,
+  popupAvatarEditSelector,
+  avatarEditButton,
 };

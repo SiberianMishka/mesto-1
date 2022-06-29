@@ -27,6 +27,8 @@ import {
   popupPictureSelector,
   validatorSelectors,
   userAvatarSelector,
+  popupAvatarEditSelector,
+  avatarEditButton,
 } from '../utils/constants.js';
 
 // Создание экземпляров валидаторов для форм
@@ -63,7 +65,7 @@ const createCard = (item) => {
       handleCardClick: () => {
         popupPicture.open(item);
       },
-      handleLikeCard: () => {
+      handleLikeClick: () => {
         card.handleLikeCard();
       },
     },
@@ -129,6 +131,26 @@ popupCardAdd.setEventListeners();
 cardAddButton.addEventListener('click', () => {
   formValidators['popup-add-card'].resetValidation();
   popupCardAdd.open();
+});
+
+// Экземпляр попапа с формами для изменения аватара
+
+const popupAvatarEdit = new PopupWithForm(popupAvatarEditSelector, (items) => {
+  popupAvatarEdit.renderLoading(true);
+  api
+    .editUserAvatar(items)
+    .then((item) => {
+      userInfo.setUserAvatar(item);
+      popupAvatarEdit.close();
+    })
+    .catch((err) => console.log(err))
+    .finally(() => popupAvatarEdit.renderLoading(false));
+});
+
+popupAvatarEdit.setEventListeners();
+avatarEditButton.addEventListener('click', () => {
+  formValidators['popup-avatar-edit'].resetValidation();
+  popupAvatarEdit.open();
 });
 
 let userId;
