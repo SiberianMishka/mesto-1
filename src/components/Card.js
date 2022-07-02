@@ -41,13 +41,12 @@ export default class Card {
   // Публичный метод для лайка карточки
 
   handleLikeCard() {
-    const cardLikeCount = this._card.querySelector('.card__like-counter');
     if (!this._cardLikeButton.classList.contains('card__like-button_active')) {
       this._api
         .like(this._id)
         .then((item) => {
           this._cardLikeButton.classList.add('card__like-button_active');
-          cardLikeCount.textContent = item.likes.length;
+          this._cardLikeCount.textContent = item.likes.length;
         })
         .catch((err) => {
           console.log(err);
@@ -57,7 +56,7 @@ export default class Card {
         .notLike(this._id)
         .then((item) => {
           this._cardLikeButton.classList.remove('card__like-button_active');
-          cardLikeCount.textContent = item.likes.length;
+          this._cardLikeCount.textContent = item.likes.length;
         })
         .catch((err) => {
           console.log(err);
@@ -92,10 +91,10 @@ export default class Card {
     this._setEventListeners();
 
     this._cardDescription = this._card.querySelector('.card__text');
+    this._cardLikeCount = this._card.querySelector('.card__like-counter');
     this._cardDescription.textContent = this._name;
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
-    this._cardLikeCount = this._card.querySelector('.card__like-counter');
     this._cardLikeCount.textContent = this._likes.length;
 
     if (!(this._ownerId === this._userId)) {

@@ -153,7 +153,6 @@ const popupCardAdd = new PopupWithForm(popupAddCardSelector, (items) => {
       const card = createCard(item);
       const cardElement = card.generateCard();
       cardList.addItem(cardElement);
-      formValidators['popup-add-card'].resetValidation();
       popupCardAdd.close();
     })
     .catch((err) => console.log(err))
