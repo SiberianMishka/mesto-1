@@ -3,10 +3,12 @@
 import './index.css';
 
 // Импорт классов
+
 import Api from '../components/Api.js';
 import Card from '../components/Card.js';
 import FormValidation from '../components/FormValidation.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
@@ -29,6 +31,7 @@ import {
   userAvatarSelector,
   popupAvatarEditSelector,
   avatarEditButton,
+  popupDeleteConfirmSelector,
 } from '../utils/constants.js';
 
 // Создание экземпляров валидаторов для форм
@@ -68,10 +71,24 @@ const createCard = (item) => {
       handleLikeClick: () => {
         card.handleLikeCard();
       },
+      handleDeleteConfirm: () => {
+        popupDeleteConfirm.setSubmitAction(() => {
+          popupDeleteConfirm.renderLoadingDelete(true);
+          api
+            .delete(item._id)
+            .then(() => {
+              card.handleDeleteCard();
+              popupDeleteConfirm.close();
+            })
+            .catch((err) => console.log(err))
+            .finally(() => popupDeleteConfirm.renderLoadingDelete(false));
+        });
+        popupDeleteConfirm.open();
+      },
     },
     cardTemplateSelector,
-    api,
-    userId
+    userId,
+    api
   );
   return card;
 };
@@ -129,9 +146,18 @@ popupEditButton.addEventListener('click', () => {
 // Экземпляр попапа с формами для добавления карточки и обработчик на кнопку вызова попапа
 
 const popupCardAdd = new PopupWithForm(popupAddCardSelector, (items) => {
-  const card = createCard(items);
-  const cardElement = card.generateCard();
-  cardList.addItem(cardElement);
+  popupCardAdd.renderLoading(true);
+  api
+    .addUserCard(items)
+    .then((item) => {
+      const card = createCard(item);
+      const cardElement = card.generateCard();
+      cardList.addItem(cardElement);
+      formValidators['popup-add-card'].resetValidation();
+      popupCardAdd.close();
+    })
+    .catch((err) => console.log(err))
+    .finally(() => popupCardAdd.renderLoading(false));
 });
 
 popupCardAdd.setEventListeners();
@@ -161,7 +187,19 @@ avatarEditButton.addEventListener('click', () => {
   popupAvatarEdit.open();
 });
 
+// Экземпляр попапа для подтверждения удаления карточки
+
+const popupDeleteConfirm = new PopupWithConfirm(popupDeleteConfirmSelector);
+popupDeleteConfirm.setEventListeners();
+
+// Вызовы функций
+enableValidation(validatorSelectors);
+
+// Переменная для id
+
 let userId;
+
+// Получение данных с сервера и их рендер
 
 api
   .getData()
@@ -172,6 +210,3 @@ api
     cardList.renderItems(cards);
   })
   .catch((err) => console.log(err));
-
-// Вызовы функций
-enableValidation(validatorSelectors);

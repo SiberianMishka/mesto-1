@@ -13,6 +13,7 @@ const userDescriptionSelector = '.profile-info__description';
 const userAvatarSelector = '.profile-info__image';
 const popupProfileSelector = '.popup_profile-edit';
 const popupAvatarEditSelector = '.popup_avatar-edit';
+const popupDeleteConfirmSelector = '.popup_delete-confirm';
 const cardTemplateSelector = '#card-template';
 const cardsContainerSelector = '.cards';
 const popupAddCardSelector = '.popup_add-card';
@@ -45,4 +46,5 @@ export {
   userAvatarSelector,
   popupAvatarEditSelector,
   avatarEditButton,
+  popupDeleteConfirmSelector,
 };

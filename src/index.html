@@ -63,7 +63,7 @@
             <h3 class="card__text"></h3>
             <div class="card__like-container">
               <button type="button" class="card__like-button"></button>
-              <p class="card__like-counter">1</p>
+              <p class="card__like-counter"></p>
             </div>
           </div>
         </article>
@@ -164,9 +164,14 @@
     <section class="popup popup_delete-confirm">
       <div class="popup__container">
         <button type="button" class="popup__close-button"></button>
-        <h2 class="popup__heading">Вы уверены?</h2>
+        <h2 class="popup__heading popup__heading_position">Вы уверены?</h2>
         <form name="popup-delete-confirm" class="popup__form" novalidate>
-          <button type="submit" class="popup__submit-button">Да</button>
+          <button
+            type="submit"
+            class="popup__submit-button popup__submit-button_position"
+          >
+            Да
+          </button>
         </form>
       </div>
     </section>

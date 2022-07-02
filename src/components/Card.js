@@ -76,8 +76,8 @@ export default class Card {
       this._handleLikeClick();
     });
 
-    this._cardDeleteButton.addEventListener('click', (evt) => {
-      this._handleDeleteCard(evt);
+    this._cardDeleteButton.addEventListener('click', () => {
+      this._handleDeleteConfirm();
     });
 
     this._cardImage.addEventListener('click', () => {
@@ -95,6 +95,8 @@ export default class Card {
     this._cardDescription.textContent = this._name;
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
+    this._cardLikeCount = this._card.querySelector('.card__like-counter');
+    this._cardLikeCount.textContent = this._likes.length;
 
     if (!(this._ownerId === this._userId)) {
       this._cardDeleteButton.style.display = 'none';

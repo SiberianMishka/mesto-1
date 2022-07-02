@@ -57,7 +57,7 @@ export default class Api {
 
   notLike(id) {
     return fetch(this._url + `/cards/${id}/likes`, {
-      method: 'PUT',
+      method: 'DELETE',
       headers: this._headers,
     }).then(this._checkResponse);
   }
